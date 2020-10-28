@@ -1,4 +1,4 @@
-module github.com/assetsadapterstroe/tncd-adapter
+module github.com/assetsadapterstore/tncd-adapter
 
 go 1.14
 
