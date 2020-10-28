@@ -1,7 +1,7 @@
 package openwtester
 
 import (
-	"github.com/assetsadapterstroe/tncd-adapter/tncd"
+	"github.com/assetsadapterstore/tncd-adapter/tncd"
 	"github.com/blocktree/openwallet/v2/log"
 	"github.com/blocktree/openwallet/v2/openw"
 )
