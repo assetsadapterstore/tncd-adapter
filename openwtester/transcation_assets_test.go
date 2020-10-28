@@ -78,7 +78,7 @@ func testCreateSummaryTransactionStep(
 
 func testSignTransactionStep(tm *openw.WalletManager, rawTx *openwallet.RawTransaction) (*openwallet.RawTransaction, error) {
 
-	_, err := tm.SignTransaction(testApp, rawTx.Account.WalletID, rawTx.Account.AccountID, "12345678", rawTx)
+	_, err := tm.SignTransaction(testApp, rawTx.Account.WalletID, rawTx.Account.AccountID, "1234567", rawTx)
 	if err != nil {
 		log.Error("SignTransaction failed, unexpected error:", err)
 		return nil, err
@@ -119,19 +119,17 @@ func testSubmitTransactionStep(tm *openw.WalletManager, rawTx *openwallet.RawTra
 
 func TestTransfer(t *testing.T) {
 	tm := testInitWalletManager()
-	walletID := "W2NfBv7q2YqXuL7DvG4MSG69j2gGa4D2R2"
-	accountID := "EeWmwZuMrrnUET56SHLaPUnRdHQH56r8GRJcg8tgRGku"
-	//accountID := "35rcc5BjVjVe7hk9ayPFSj1ZcHnXtC7fYrYNobtzf5hU"
-	to := "tncd"
+	walletID := "Vz2oTGQwm8qLwLfKxTKPJHiunukqiCbtey"
+	accountID := "BSVgqfUhUPm3rHr8kWjTwMAHF1gXEZZSqyYnwvuSDBHw"
 
-	//accountID := "F7aeTnSdjEA16x4H3n1vPtDEo9Xp5Vus11pwY5QF6K3y"
-	//to := ""
+	to := "kencani"
 
-	for i := 0; i < 1; i++ {
+
+	for i := 1; i < 2; i++ {
 
 		testGetAssetsAccountBalance(tm, walletID, accountID)
 
-		rawTx, err := testCreateTransactionStep(tm, walletID, accountID, to, "0.1", "", "", nil)
+		rawTx, err := testCreateTransactionStep(tm, walletID, accountID, to, "1", "", "try this a", nil)
 		if err != nil {
 			return
 		}
@@ -150,8 +148,9 @@ func TestTransfer(t *testing.T) {
 
 		_, err = testSubmitTransactionStep(tm, rawTx)
 		if err != nil {
-			return
+			continue
 		}
+		return
 	}
 }
 

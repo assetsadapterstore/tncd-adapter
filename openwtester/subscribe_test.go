@@ -63,7 +63,7 @@ func TestSubscribeAddress_TNC(t *testing.T) {
 		endRunning = make(chan bool, 1)
 		symbol     = "TNC"
 		addrs      = map[string]string{
-			"piajiahua": "sender",
+			"kencani": "sender",
 			//"eostesterbob": "sender",
 		}
 	)
@@ -100,7 +100,7 @@ func TestSubscribeAddress_TNC(t *testing.T) {
 
 	//log.Debug("already got scanner:", assetsMgr)
 	scanner := assetsMgr.GetBlockScanner()
-	scanner.SetRescanBlockHeight(11288040)
+	scanner.SetRescanBlockHeight(1001172)
 
 	if scanner == nil {
 		log.Error(symbol, "is not support block scan")

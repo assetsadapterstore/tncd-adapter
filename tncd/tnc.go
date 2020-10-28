@@ -33,7 +33,14 @@ func NewWalletManager() *WalletManager {
 	wm.WalletManager = futurepia.NewWalletManager()
 	wm.Config = futurepia.NewConfig(Symbol)
 	wm.Log = log.NewOWLogger(wm.Symbol())
+	log.Warn(wm.Symbol())
+	wm.TxDecoder = NewTransactionDecoder(&wm)
 	return &wm
+}
+
+//Decimal 小数位精度
+func (wm *WalletManager) Decimal() int32 {
+	return 6
 }
 
 //FullName 币种全名
