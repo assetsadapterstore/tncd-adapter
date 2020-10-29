@@ -4,7 +4,7 @@ go 1.14
 
 require (
 	github.com/astaxie/beego v1.12.0
-	github.com/blocktree/futurepia-adapter v1.2.5
+	github.com/blocktree/futurepia-adapter v1.2.6
 	github.com/blocktree/go-owcrypt v1.1.1
 	github.com/blocktree/openwallet/v2 v2.0.10
 	github.com/eoscanada/eos-go v0.8.10

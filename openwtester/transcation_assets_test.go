@@ -122,14 +122,14 @@ func TestTransfer(t *testing.T) {
 	walletID := "Vz2oTGQwm8qLwLfKxTKPJHiunukqiCbtey"
 	accountID := "BSVgqfUhUPm3rHr8kWjTwMAHF1gXEZZSqyYnwvuSDBHw"
 
-	to := "kencani"
+	to := "bltesttnc222"
 
 
 	for i := 1; i < 2; i++ {
 
 		testGetAssetsAccountBalance(tm, walletID, accountID)
 
-		rawTx, err := testCreateTransactionStep(tm, walletID, accountID, to, "1", "", "try this a", nil)
+		rawTx, err := testCreateTransactionStep(tm, walletID, accountID, to, "4", "", "try this a", nil)
 		if err != nil {
 			return
 		}
@@ -156,9 +156,9 @@ func TestTransfer(t *testing.T) {
 
 func TestSummary(t *testing.T) {
 	tm := testInitWalletManager()
-	walletID := "W2NfBv7q2YqXuL7DvG4MSG69j2gGa4D2R2"
-	accountID := "EeWmwZuMrrnUET56SHLaPUnRdHQH56r8GRJcg8tgRGku"
-	summaryAddress := "tncd"
+	walletID := "Vz2oTGQwm8qLwLfKxTKPJHiunukqiCbtey"
+	accountID := "CiVKqwx8icASy3gQtuKr89pKmLV482aPrn5EbEcgmatE"
+	summaryAddress := "blocklinktest2"
 
 	//contract := openwallet.SmartContract{
 	//	Address:  "eosio.token",
