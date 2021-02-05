@@ -17,12 +17,11 @@ package openwtester
 
 import (
 	"github.com/astaxie/beego/config"
+	"github.com/blocktree/openwallet/v2/log"
 	"github.com/blocktree/openwallet/v2/openw"
+	"github.com/blocktree/openwallet/v2/openwallet"
 	"path/filepath"
 	"testing"
-
-	"github.com/blocktree/openwallet/v2/log"
-	"github.com/blocktree/openwallet/v2/openwallet"
 )
 
 func TestWalletManager_GetTransactions(t *testing.T) {

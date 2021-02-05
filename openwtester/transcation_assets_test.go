@@ -17,6 +17,7 @@ package openwtester
 
 import (
 	"github.com/blocktree/openwallet/v2/openw"
+	"github.com/emirpasic/gods/utils"
 	"testing"
 
 	"github.com/blocktree/openwallet/v2/log"
@@ -122,35 +123,36 @@ func TestTransfer(t *testing.T) {
 	walletID := "Vz2oTGQwm8qLwLfKxTKPJHiunukqiCbtey"
 	accountID := "BSVgqfUhUPm3rHr8kWjTwMAHF1gXEZZSqyYnwvuSDBHw"
 
-	to := "bltesttnc222"
+	to := "tnctnctnc111"
+	memos := []string{"1346046466631663618","1346046466627469313","1346046466619080705"}
 
+	for j := 0;j< 1;j++ {
+		for i := 0; i < len(memos); i++ {
 
-	for i := 1; i < 2; i++ {
+			testGetAssetsAccountBalance(tm, walletID, accountID)
 
-		testGetAssetsAccountBalance(tm, walletID, accountID)
+			rawTx, err := testCreateTransactionStep(tm, walletID, accountID, to, "0.1"+utils.ToString(i), "", memos[i], nil)
+			if err != nil {
+				return
+			}
 
-		rawTx, err := testCreateTransactionStep(tm, walletID, accountID, to, "4", "", "try this a", nil)
-		if err != nil {
-			return
+			log.Std.Info("rawTx: %+v", rawTx)
+
+			_, err = testSignTransactionStep(tm, rawTx)
+			if err != nil {
+				return
+			}
+
+			_, err = testVerifyTransactionStep(tm, rawTx)
+			if err != nil {
+				return
+			}
+
+			_, err = testSubmitTransactionStep(tm, rawTx)
+			if err != nil {
+				continue
+			}
 		}
-
-		log.Std.Info("rawTx: %+v", rawTx)
-
-		_, err = testSignTransactionStep(tm, rawTx)
-		if err != nil {
-			return
-		}
-
-		_, err = testVerifyTransactionStep(tm, rawTx)
-		if err != nil {
-			return
-		}
-
-		_, err = testSubmitTransactionStep(tm, rawTx)
-		if err != nil {
-			continue
-		}
-		return
 	}
 }
 

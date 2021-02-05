@@ -26,6 +26,7 @@ const (
 
 type WalletManager struct {
 	*futurepia.WalletManager
+	Api *Client // 节点客户端
 }
 
 func NewWalletManager() *WalletManager {
@@ -35,6 +36,7 @@ func NewWalletManager() *WalletManager {
 	wm.Log = log.NewOWLogger(wm.Symbol())
 	log.Warn(wm.Symbol())
 	wm.TxDecoder = NewTransactionDecoder(&wm)
+	wm.DecoderV2 = NewAddressDecoder2(&wm)
 	return &wm
 }
 

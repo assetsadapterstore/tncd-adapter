@@ -113,7 +113,7 @@ func TestSubscribeAddress_TNC(t *testing.T) {
 	}
 
 
-	scanner.SetRescanBlockHeight(1001172)
+	scanner.SetRescanBlockHeight(3038434)
 
 	if scanner == nil {
 		log.Error(symbol, "is not support block scan")
