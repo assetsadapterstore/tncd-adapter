@@ -58,6 +58,40 @@ func (sub *subscriberSingle) BlockExtractDataNotify(sourceKey string, data *open
 	return nil
 }
 
+func TestAccount_NULS2(t *testing.T) {
+	var (
+		symbol     = "TNC"
+	)
+	assetsMgr, err := openw.GetAssetsAdapter(symbol)
+	if err != nil {
+		log.Error(symbol, "is not support")
+		return
+	}
+	testInitWalletManager()
+
+	//读取配置
+	absFile := filepath.Join(configFilePath, symbol+".ini")
+
+	c, err := config.NewConfig("ini", absFile)
+	if err != nil {
+		return
+	}
+	assetsMgr.LoadAssetsConfig(c)
+
+	assetsLogger := assetsMgr.GetAssetsLogger()
+	if assetsLogger != nil {
+		assetsLogger.SetLogFuncCall(true)
+	}
+
+	dec := assetsMgr.GetAddressDecoderV2()
+	if dec == nil{
+		log.Error("dec is nil")
+		return
+	}
+	res := dec.AddressVerify("tnctnctnc222")
+	log.Warn(res)
+
+}
 func TestSubscribeAddress_TNC(t *testing.T) {
 
 	var (
