@@ -26,7 +26,6 @@ const (
 
 type WalletManager struct {
 	*futurepia.WalletManager
-	Api *Client // 节点客户端
 }
 
 func NewWalletManager() *WalletManager {
